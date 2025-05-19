@@ -57,7 +57,7 @@ namespace Abp.Runtime.Session
                     return Convert.ToInt32(tenantIdClaim.Value);
                 }
 
-                if (UserId == null)
+                if (UserId == null || MultiTenancyConsts.AlwaysResolveTenantId)
                 {
                     //Resolve tenant id from request only if user has not logged in!
                     return TenantResolver.ResolveTenantId();
